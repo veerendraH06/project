@@ -9,6 +9,8 @@ class GetPatientAppointmentBlocEvent extends PatientAppointmentBlocEvent {
   List<Object> get props => [];
 }
 
+
+/// SearchPatient Event
 class SearchPatientEvent extends PatientAppointmentBlocEvent {
   final String keyword;
 
@@ -16,4 +18,16 @@ class SearchPatientEvent extends PatientAppointmentBlocEvent {
 
   @override
   List<Object> get props => [this.keyword];
+}
+
+
+
+/// FilterPatient Event
+class FilterPatientEvent extends PatientAppointmentBlocEvent{
+  final String users;
+
+  FilterPatientEvent({@required this.users});
+
+  @override
+  List<Object> get props =>[this.users];
 }

@@ -35,5 +35,6 @@ class PatientBloc extends BaseBloc<PatientAppointmentBlocEvent, PatientAppointme
     if (event is SearchPatientEvent) {
       yield state.copyWith(keyword: event.keyword);
     }
+
   }
 }

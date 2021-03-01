@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home:BlocProvider<PatientBloc>(
+        home: BlocProvider<PatientBloc>(
         create: (context) => PatientBloc(),
-    child: PatientAppointment(),
+            child: PatientAppointment(),
     ),
     );    // PatientAppointment());
   }

@@ -1,4 +1,9 @@
+import 'package:YOURDRS_FlutterAPP/blocs/doctors_abstractbloc.dart';
+import 'package:YOURDRS_FlutterAPP/blocs/doctors_bloc.dart';
+import 'package:YOURDRS_FlutterAPP/blocs/doctors_event.dart';
+import 'package:YOURDRS_FlutterAPP/blocs/filter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -9,6 +14,8 @@ class Dictation extends StatefulWidget {
 }
 
 class _DictationState extends State<Dictation> {
+
+
   var _currentSelectedValue;
   final String url = "https://jsonplaceholder.typicode.com/users";
 
@@ -58,13 +65,20 @@ class _DictationState extends State<Dictation> {
                           hint: Text("Provider"),
                           value: _currentSelectedValue,
                           isDense: true,
-                          onChanged: (String newValue) {
-                            setState(() {
-                              _currentSelectedValue = newValue;
-                              state.didChange(newValue);
-                              print(newValue);
-                            });
-                          },
+                          onChanged: (String resBody)
+                            {
+                              BlocProvider.of<FilterdBloc>(context).add(FilterPatientEvent(users: resBody));
+                              // BlocBuilder<FilterdBloc,PatientAppointmentBlocState>
+                              //   (builder: ();
+
+                            },
+                          // {
+                          //   setState(() {
+                          //     _currentSelectedValue = newValue;
+                          //     state.didChange(newValue);
+                          //     print(newValue);
+                          //   });
+                          // },
                           items: data.map((item) {
                             return DropdownMenuItem<String>(
                               child: new Text(item['name']),
